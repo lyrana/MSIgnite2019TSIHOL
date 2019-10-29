@@ -1,6 +1,27 @@
-# MSIgnite2019TSIHOL
-ToDo Provisioning
-This assumes that a TSI instance, IoTHub w/ TSI consumer group, and PnPDevice sending data have already been configured
+Time Series Insights Hands on Lab - Guide
+-----------------------------------------
+
+Azure Time Series Insights (TSI) is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. Time Series Insights is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. Time Series Insights provides rich asset-based operational intelligence together with ad-hoc data exploration to address the IoT analytics needs.
+
+(This assumes that a TSI instance, IoTHub, and PnPDevice sending data have already been configured...)
+
+**Step 1: Create an Azure Time Series Insights Preview environment**
+
+* Sign-in to the Azure portal by using your subscription account.
+* Select Create a resource > Internet of Things > Time Series Insights.
+
+[]media/search-the-marketplace.png)
+
+* In the Create Time Series Insights environment pane, on the Basics tab, set the following parameters:
+
+**Parameter**|**Action**
+:-----:|:-----:
+Environment name|Enter a unique name for the Azure Time Series Insights Preview environment.
+Subscription|Enter the subscription where you want to create the Azure Time Series Insights Preview environment. A best practice is to use the same subscription as the rest of the IoT resources created during the lab.
+Resource group|Select an existing resource group or create a new resource group for the Azure Time Series Insights Preview environment resource.
+Location|Select a datacenter region for your Azure Time Series Insights Preview environment. To avoid additional latency, it's best to create your Azure Time Series Insights Preview environment in the same region as your IoT Hub created previously.
+Tier|Select PAYG (pay-as-you-go). This is the SKU for the Azure Time Series Insights Preview product.
+Property ID|Enter a value that uniquely identifies your time series instance. The value you enter in the Property ID box is immutable. You can't change it later. For this lab, enter iothub-connection-device-id. To learn more about Time Series ID, see [Best practices for choosing a Time Series ID](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-update-how-to-id).
 
 **Step ToDo X: Explore data in your TSI Environment**
 
