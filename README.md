@@ -10,7 +10,7 @@ Now that your device is sending data to the cloud you'll need a data historian t
 1. Sign-in to the Azure portal by using your subscription account.
 2. Select Create a resource > Internet of Things > Time Series Insights.
 
-[Search the market place](media/search-the-marketplace.PNG)
+![Create an environment](media/search-the-marketplace.png)
 
 3. In the Create Time Series Insights environment pane, on the Basics tab, set the following parameters:
 
@@ -40,17 +40,17 @@ IoT Hub access policy|Select iothubowner.
 IoT Hub consumer group|Select New, enter a unique name, and then select Add. The consumer group must be a unique value in Azure Time Series Insights Preview.
 Timestamp property|This value is used to identify the Timestamp property in your incoming telemetry data. Leave this box empty. When left empty, Time Series Insights will default to the message enqueued timestamp set by IoT Hub or Event Hub. This is sufficient for the lab.
 
-[Create an environment](media/createTsiEnvironment.PNG)
+![Create an environment](media/createTsiEnvironment.png)
 
 5. Click on “Review + create”
 
-[Review and create](media/review-and-create.PNG)
+![Review and create](media/review-and-create.png)
 
 6. Click “Create”
 
 7. Once your deployment is complete, navigate to your new Time Series Insights resource in the Azure portal. You should have access to your environment by default. To verify, select "Data Access Policies" under "Settings." If you do not see your credentials listed, grant yourself access by clicking "Add" and searching for your identity.
 
-[Verify access](media/verify-accesss.PNG)
+![Verify access](media/verify-accesss.png)
 
 **Step 2: Explore data in your TSI Environment**
 
@@ -58,25 +58,25 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 1. On the "Overview" pane you'll see the link to your TSI explorer:
 
-[Overview pane](media/overview-pane.PNG)
+TODO: img [Overview pane](media/overview-pane.PNG)
 
 2.  Wait for the environment to load in the browser. Once it loads, you'll be on the default landing page. Some of the key features include:
 
 * Selecting a time range: You can select a different time range by dragging the handles of the availability picker, or using the date-time selector in the top right corner. You can expand the bar to see the volume of data over time, or keep it collapsed for a slimmer look. Any time selection that is within the orange bar boundary will query your Time Series Insights environment's warm store. Warm storage is configurable for upto 31 days retention, and is designed for frequent querying of recent data. There is no charge for these queries.
 
-[Availability picker](media/availabilityPicker.PNG)
+![Availability picker](media/availabilityPicker.PNG)
 
 * Hierachy: On the left, you'll see the Time Series Model (TSM) hierachy. Time series that are not yet configured to a hierachy will fall under the default of "Unassigned Time Series Instances."
 
-[Hierachy](media/defaultHierachy.PNG)
+![Hierachy](media/defaultHierachy.PNG)
 
 * Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations, which you'll explore in a future step.
 
 3. Click on the time series and then click on “Show temp". If your selected time range is narrow, expand to view more data.
 
-[Temp plotted](media/tempPlotted.PNG)
+![Temp plotted](media/tempPlotted.PNG)
 
-Step ToDo: Contextualize and Analyze data
+**Step 3: Contextualize and Analyze data**
 
 In the previous section, you charted a raw data stream without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
 Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
@@ -86,7 +86,7 @@ Instances enrich incoming IoT data with device metadata. An instance links to 1 
 
 1. In the upper left part of the explorer select the Model tab:
 
-[Model Tab](media/modelPane.PNG)
+![Model Tab](media/modelPane.PNG)
 
 2. Next we will update the DefaulType and author numers variables, including a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" ContosoArtShipping's asset trackers are complete with a damage detection module that combines accelerometer data with GPS data to emit a signal indicating the condition of the parcel. Because the signal is numeric--0 for a healthy state and 1 for damaged--we can associate those values to a label. Click on "Types," and on the far right, under "Actions," select the pencil icon.
 
@@ -106,7 +106,7 @@ Damaged 1
 
 Default Category: Unknown
 
-[Categorical](media/categorical.PNG)
+![Categorical](media/categorical.PNG)
 
 Add a second variable for latitude:
 
@@ -124,7 +124,7 @@ Levels:
 Name: Route Name (click + Add Level to expand)
 ParcelID
 
-[Add Hierachy](media/addHierachy.PNG)
+![Add Hierachy](media/addHierachy.PNG)
 
 Click "Save"
 
@@ -134,18 +134,18 @@ Enter the following:
 Route Name (from hierarchy) : Redmond-Seattle
 ParcelD (from hierarchy) : Enter a unique identifier for your parcel
 
-[Edit Instance Fields](media/editInstanceFields.PNG)
+![Edit Instance Fields](media/editInstanceFields.PNG)
 
 Save to close the dialogue 
 
 6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel. Now, after expanding the hierarchy and selecting the tracking device, you will see the variables authored above ready to be charted. Click on "Show lat," "Show long," and "Show condition" to add these values to the chart.
 You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Perhaps there was a traffic incident that caused the drive to break hard. Someone monitoring the parcels or doing a post-mortem of an incident would most likely want to have data on when and where the damage occured. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
 
-[Zoom](media/zoom.png)
+![Zoom](media/zoom.PNG)
 
 After zooming into these events, select the Marker tool and place it in the chart such that it intersects the lat and long while the sensor was reporting damage, click again to "drop" the marker:
 
-[Marker](media/marker.PNG)
+![Marker](media/marker.PNG)
 
 This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
