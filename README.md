@@ -76,7 +76,7 @@ TODO: img [Overview pane](media/overview-pane.PNG)
 
 ![Temp plotted](media/tempPlotted.PNG)
 
-Step ToDo: Contextualize and Analyze data
+**Step 3: Contextualize and Analyze data**
 
 In the previous section, you charted a raw data stream without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
 Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
@@ -141,7 +141,7 @@ Save to close the dialogue
 6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel. Now, after expanding the hierarchy and selecting the tracking device, you will see the variables authored above ready to be charted. Click on "Show lat," "Show long," and "Show condition" to add these values to the chart.
 You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
 
-[Zoom](media/zoom.PNG)
+![Zoom](media/zoom.PNG)
 
 After zooming into these events, select the Marker tool and place it in the chart such that it intersects the lat and long while the sensor was reporting damage, click again to "drop" the marker:
 
