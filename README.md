@@ -139,7 +139,7 @@ ParcelD (from hierarchy) : Enter a unique identifier for your parcel
 Save to close the dialogue 
 
 6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel. Now, after expanding the hierarchy and selecting the tracking device, you will see the variables authored above ready to be charted. Click on "Show lat," "Show long," and "Show condition" to add these values to the chart.
-You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
+You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Perhaps there was a traffic incident that caused the drive to break hard. Someone monitoring the parcels or doing a post-mortem of an incident would most likely want to have data on when and where the damage occured. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
 
 [Zoom](media/zoom.png)
 
