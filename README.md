@@ -106,7 +106,7 @@ Damaged 1
 
 Default Category: Unknown
 
-[categorical](media/categorical.png)
+[Categorical](media/categorical.png)
 
 Add a second variable for latitude:
 
@@ -134,7 +134,7 @@ Enter the following:
 Route Name (from hierarchy) : Redmond-Seattle
 ParcelD (from hierarchy) : Enter a unique identifier for your parcel
 
-[Add Hierachy](media/editInstanceFields.png)
+[Edit Instance Fields](media/editInstanceFields.png)
 
 Save to close the dialogue 
 
@@ -145,7 +145,7 @@ You'll notice that the category for condition presents two different colors, ind
 
 After zooming into these events, select the Marker tool and place it in the chart such that it intersects the lat and long while the sensor was reporting damage, click again to "drop" the marker:
 
-[Zoom](media/marker.png)
+[Marker](https://github.com/lyrana/MSIgnite2019TSIHOL/blob/master/media/marker.PNG)
 
 This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
