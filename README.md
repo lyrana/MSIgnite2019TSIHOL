@@ -10,7 +10,7 @@ Azure Time Series Insights (TSI) is an end-to-end PaaS offering to ingest, proce
 1. Sign-in to the Azure portal by using your subscription account.
 2. Select Create a resource > Internet of Things > Time Series Insights.
 
-[](media/search-the-marketplace.png)
+[Search the market place](media/search-the-marketplace.png)
 
 3. In the Create Time Series Insights environment pane, on the Basics tab, set the following parameters:
 
@@ -40,7 +40,7 @@ IoT Hub access policy|Select iothubowner.
 IoT Hub consumer group|Select New, enter a unique name, and then select Add. The consumer group must be a unique value in Azure Time Series Insights Preview.
 Timestamp property|This value is used to identify the Timestamp property in your incoming telemetry data. Leave this box empty. When left empty, Time Series Insights will default to the message enqueued timestamp set by IoT Hub or Event Hub. This is sufficient for the lab.
 
-[Create an environment](media/create-tsi-environment.png)
+[Create an environment](media/createTsiEnvironment.png)
 
 5. Click on “Review + create”
 
