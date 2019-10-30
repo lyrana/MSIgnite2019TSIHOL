@@ -10,7 +10,7 @@ Now that your device is sending data to the cloud you'll need a data historian t
 1. Sign-in to the Azure portal by using your subscription account.
 2. Select Create a resource > Internet of Things > Time Series Insights.
 
-[Search the market place](media/search-the-marketplace.PNG)
+<img align="left" src="media/search-the-marketplace.PNG"/>
 
 3. In the Create Time Series Insights environment pane, on the Basics tab, set the following parameters:
 
