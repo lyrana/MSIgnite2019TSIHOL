@@ -46,7 +46,7 @@ Timestamp property|This value is used to identify the Timestamp property in your
 
 ![Review and create](media/review-and-create.png)
 
-6. Click “Create”
+6. Review the values entered and click “Create”
 
 7. Once your deployment is complete, navigate to your new Time Series Insights resource in the Azure portal. You should have access to your environment by default. To verify, select "Data Access Policies" under "Settings." If you do not see your credentials listed, grant yourself access by clicking "Add" and searching for your identity.
 
