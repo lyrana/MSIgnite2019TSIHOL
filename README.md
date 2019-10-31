@@ -70,9 +70,9 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 ![Hierachy](media/defaultHierachy.PNG)
 
-* Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations, which you'll explore in a future step.
+* Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations.
 
-3. Click on the time series and then click on “Show temp". If your selected time range is narrow, expand to view more data.
+3. Click on your asset tracker, you'll see the properties available for plotting, scroll down and click on “Show humidity". If your selected time range is narrow, expand to view more data. Add more data such as  
 
 ![Temp plotted](media/tempPlotted.PNG)
 
@@ -80,15 +80,15 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 In the previous section, you charted a raw data stream without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
 Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
-Types allow users to define calculations, aggregates, and categories over raw telemetry data, as well as define a tag for the sensor (example: Temperature sensor, Pressure sensor).
-Hierarchies allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Delivery Routes -> ParcelID).
-Instances enrich incoming IoT data with device metadata. An instance links to 1 type definition and multiple hierarchy definitions.
+**Types** allow users to define calculations, aggregates, and categories over raw telemetry data, as well as define a tag for the sensor (example: Temperature sensor, Pressure sensor). This is achieved by authoring type variables. The DefaultType is pre-configured with three variables: temp, humidity, and EventCount, which can easily be removed or updated if need be.  
+**Hierarchies** allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Delivery Routes -> ParcelID).
+**Instances** enrich incoming IoT data with device metadata. An instance links to 1 type definition and multiple hierarchy definitions.
 
 1. In the upper left part of the explorer select the Model tab:
 
 ![Model Tab](media/modelPane.PNG)
 
-2. Next we will update the DefaulType and author numers variables, including a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" ContosoArtShipping's asset trackers are complete with a damage detection module that combines accelerometer data with GPS data to emit a signal indicating the condition of the parcel. Because the signal is numeric--0 for a healthy state and 1 for damaged--we can associate those values to a label. Click on "Types," and on the far right, under "Actions," select the pencil icon.
+2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" ContosoArtShipping's asset trackers are complete with a damage detection module that combines accelerometer data with GPS data to emit a signal indicating the condition of the parcel. Because the signal is numeric--0 for a healthy state and 1 for damaged--we can associate those values to a label. Click on "Types," and on the far right, under "Actions," select the pencil icon.
 
 Update the Name from DefaultType to Asset Tracker
 Update Description from Default type to "Tracker with temperature, location, and damage sensors"
