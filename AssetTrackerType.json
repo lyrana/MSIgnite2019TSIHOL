@@ -13,38 +13,6 @@
                         "tsx": "count()"
                     }
                 },
-                "condition": {
-                    "kind": "categorical",
-                    "value": {
-                        "tsx": "tolong($event.temperature_anomaly.Double)"
-                    },
-                    "filter": {
-                        "tsx": "(tolong($event.temperature_anomaly.Double)) != null"
-                    },
-                    "interpolation": {
-                        "kind": "step",
-                        "boundary": {
-                            "span": "PT5M"
-                        }
-                    },
-                    "categories": [
-                        {
-                            "label": "OK",
-                            "values": [
-                                0
-                            ]
-                        },
-                        {
-                            "label": "NOK",
-                            "values": [
-                                1
-                            ]
-                        }
-                    ],
-                    "defaultCategory": {
-                        "label": "Unknown"
-                    }
-                },
                 "humidity": {
                     "kind": "numeric",
                     "value": {
@@ -65,9 +33,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "pressure": {
                     "kind": "numeric",
@@ -78,9 +44,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "magnetometer_x": {
                     "kind": "numeric",
@@ -91,9 +55,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "magnetometer_y": {
                     "kind": "numeric",
@@ -104,9 +66,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "magnetometer_z": {
                     "kind": "numeric",
@@ -117,9 +77,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "gyroscope_x": {
                     "kind": "numeric",
@@ -130,9 +88,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "gyroscope_y": {
                     "kind": "numeric",
@@ -143,9 +99,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "gyroscope_z": {
                     "kind": "numeric",
@@ -156,9 +110,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "accelerometer_x": {
                     "kind": "numeric",
@@ -169,9 +121,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "accelerometer_y": {
                     "kind": "numeric",
@@ -182,9 +132,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "accelerometer_z": {
                     "kind": "numeric",
@@ -195,9 +143,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "location_lat": {
                     "kind": "numeric",
@@ -208,9 +154,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "location_lon": {
                     "kind": "numeric",
@@ -221,9 +165,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 },
                 "location_alt": {
                     "kind": "numeric",
@@ -234,9 +176,7 @@
                     "interpolation": null,
                     "aggregation": {
                         "tsx": "avg($value)"
-                    },
-                    "categories": null,
-                    "defaultCategory": null
+                    }
                 }
             }
         }
