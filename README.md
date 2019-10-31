@@ -58,7 +58,7 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 1. On the "Overview" pane you'll see the link to your TSI explorer:
 
-TODO: img [Overview pane](media/overview-pane.PNG)
+![Overview pane](media/overview-pane.PNG)
 
 2.  Wait for the environment to load in the browser. Once it loads, you'll be on the default landing page. Some of the key features include:
 
