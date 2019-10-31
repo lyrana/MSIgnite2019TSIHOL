@@ -101,20 +101,24 @@ Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
 
 ![Model Tab](media/modelPane.PNG)
 
-2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" ContosoArtShipping's asset trackers are complete with a damage detection module that combines accelerometer data with GPS data to emit a signal indicating the condition of the parcel. Because the signal is numeric--0 for a healthy state and 1 for damaged--we can associate those values to a label. Click on "Types," and on the far right, under "Actions," select the pencil icon.
+2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimenal artwork, and their trucks have climate controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help us label anomalies.  
 
-Update the Name from DefaultType to Asset Tracker
-Update Description from Default type to "Tracker with temperature, location, and damage sensors"
+Click on "Types," and on the far right, under "Actions," select the pencil icon.
+
+Update the Name from DefaultType to Asset Tracker  
+
+Update Description from Default type to "Asset tracker equipped with seven sensors"  
+
 Click on "Variables" and select "Add Variable"
 
 Enter the following:
 
-Name: condition
-Kind: Categorical
-Value: Select condition (Double) from the drop-down
-Categories:
-Label Value
-Undamaged 0
+Name: condition  
+Kind: Categorical  
+Value: Select condition (Double) from the drop-down  
+Categories:  
+Label Value  
+Undamaged 0  
 Damaged 1
 
 Default Category: Unknown
