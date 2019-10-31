@@ -72,9 +72,22 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 * Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations.
 
-3. Click on your asset tracker, you'll see the properties available for plotting, scroll down and click on “Show humidity". If your selected time range is narrow, expand to view more data. Add more data such as  
+3. Click on your asset tracker, you'll see the properties available for plotting, click on “Show humidity." If your selected time range is narrow, expand to view more data. Click on additonal properties to add them to the chart, including temperature, pressure, accelerometer, and latitude and longitude data:
 
-![Temp plotted](media/tempPlotted.PNG)
+![Temp plotted](media/plotted-chart.PNG)
+
+You can increase the time interval:
+
+![Temp plotted](media/time-interval.PNG)
+
+Your plotted time series are shown below in the well, along with additional settings. Click on the gear icon for one of your selected variables to expand the settings, and toggle the options to see the various views available. You'll notice there is also a Time Shift setting. Time Shift allows you to compare a tag to itself over a previous interval in time, and other tags plotted will be de-selected, but remain in the well. This is especially useful for data that is highly periodic or seasonal. You will need at least an hours' worth of data to view the Time Shift, thus it is not yet available for the lab. The ability to select custom Time Shift intervals in addition to the pre-selection options is on the product road-map.
+
+Uncheck every variable except for temperature, and then change the charting options to heat map:
+
+![Temp plotted](media/chart-options.png)
+
+![Temp plotted](media/heat-map.PNG)
+
 
 **Step 3: Contextualize and Analyze data**
 
