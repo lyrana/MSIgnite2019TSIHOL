@@ -1,16 +1,16 @@
-Time Series Insights Hands on Lab - Guide
+Time Series Insights Section of the 2019 Ignite Hands on Lab
 -----------------------------------------
 
-Azure Time Series Insights (TSI) is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. Time Series Insights is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. Time Series Insights provides rich asset-based operational intelligence together with ad-hoc data exploration to address the IoT analytics needs.
+(Assuming that participants have gone through PnP, DPS and Hub steps prior)
 
-(This assumes that a TSI instance, IoTHub, and PnPDevice sending data have already been configured...)
+Now that your device is sending data to the cloud you'll need a data historian to not only store and retain data, but also for ad hoc querying and analysis, as well as visualizations. Introducing Azure Time Series Insights Preview (TSI). TSI is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. TSI is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. The Time Series Insights Preview pay-as-you-go (PAYG) SKU just launched additional features, many of which we will explore today.
 
 **Step 1: Create an Azure Time Series Insights Preview environment**
 
 1. Sign-in to the Azure portal by using your subscription account.
 2. Select Create a resource > Internet of Things > Time Series Insights.
 
-[](.media/search-the-marketplace.png)
+![Create an environment](media/search-the-marketplace.png)
 
 3. In the Create Time Series Insights environment pane, on the Basics tab, set the following parameters:
 
@@ -26,7 +26,7 @@ Storage account name|Enter a globally unique name for a new storage account.
 Enable Warm Store?|Select Yes to enable warm store.
 Data Retention (days)|Choose the default option of 7 days
 
-4. Click on “Next: Event Source” in this section we will establish a connection between our existing hub and TSI:
+4. Click on “Next: Event Source” to establish a connection between your IoT Hub and TSI:
 
 **Parameter**|**Action**
 -----|-----
@@ -40,17 +40,17 @@ IoT Hub access policy|Select iothubowner.
 IoT Hub consumer group|Select New, enter a unique name, and then select Add. The consumer group must be a unique value in Azure Time Series Insights Preview.
 Timestamp property|This value is used to identify the Timestamp property in your incoming telemetry data. Leave this box empty. When left empty, Time Series Insights will default to the message enqueued timestamp set by IoT Hub or Event Hub. This is sufficient for the lab.
 
-[](.media/create-tsi-environment.png)
+![Create an environment](media/createTsiEnvironment.png)
 
 5. Click on “Review + create”
 
-[](.media/review-and-create.png)
+![Review and create](media/review-and-create.png)
 
 6. Click “Create”
 
 7. Once your deployment is complete, navigate to your new Time Series Insights resource in the Azure portal. You should have access to your environment by default. To verify, select "Data Access Policies" under "Settings." If you do not see your credentials listed, grant yourself access by clicking "Add" and searching for your identity.
 
-[](.media/verify-accesss.png)
+![Verify access](media/verify-accesss.png)
 
 **Step 2: Explore data in your TSI Environment**
 
@@ -58,52 +58,98 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 1. On the "Overview" pane you'll see the link to your TSI explorer:
 
-[](.media/overview-pane.png)
+TODO: img [Overview pane](media/overview-pane.PNG)
 
 2.  Wait for the environment to load in the browser. Once it loads, you'll be on the default landing page. Some of the key features include:
 
-Selecting a time range: You can select a different time range by dragging the handles of the availability picker, or using the date-time selector in the top right corner. Any time selection that is within the orange bar boundary will query your Time Series Insights environment's warm store. Warm storage is configurable for upto 31 days retention, and is designed for frequent querying of recent data. There is no charge for these queries. 
+* Selecting a time range: You can select a different time range by dragging the handles of the availability picker, or using the date-time selector in the top right corner. You can expand the bar to see the volume of data over time, or keep it collapsed for a slimmer look. Any time selection that is within the orange bar boundary will query your Time Series Insights environment's warm store. Warm storage is configurable for upto 31 days retention, and is designed for frequent querying of recent data. There is no charge for these queries.
 
-Plotting: In the middle of the page is the charting pane, after charting time series, you'll see the time series event values in the chart and the instances will appear in the well below with additional settings, which we will explore in a future step.
+![Availability picker](media/availabilityPicker.PNG)
 
-Hierachy: On the left, you'll see the Time Series Model (TSM) hierachy, expand “Time Series Instances” to see all the time series in the environment.
+* Hierachy: On the left, you'll see the Time Series Model (TSM) hierachy. Time series that are not yet configured to a hierachy will fall under the default of "Unassigned Time Series Instances."
 
-3. Click on the first time series ToDO “device1” and then click on “Show humidity”. You will see a time series chart to the right. EventCount, humidity, messageId and temperature are the default variables created in the environment. Step __ ToDo will demostrate further analysis using the charting pane. 
+![Hierachy](media/defaultHierachy.PNG)
 
-ToDo image
+* Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations, which you'll explore in a future step.
 
-Step ToDo: Contextualize and Analyze data
+3. Click on the time series and then click on “Show temp". If your selected time range is narrow, expand to view more data.
 
-In the previous section, you explored raw data without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
+![Temp plotted](media/tempPlotted.PNG)
+
+**Step 3: Contextualize and Analyze data**
+
+In the previous section, you charted a raw data stream without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
 Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
-Types allow users to define calculations and aggregates over raw telemetry data and specify a tag for the sensor (example: Temperature sensor, Pressure sensor). In this lab you will use the ‘default type’ that performs a count operation.
-Hierarchies allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Building -> Room).
+Types allow users to define calculations, aggregates, and categories over raw telemetry data, as well as define a tag for the sensor (example: Temperature sensor, Pressure sensor).
+Hierarchies allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Delivery Routes -> ParcelID).
 Instances enrich incoming IoT data with device metadata. An instance links to 1 type definition and multiple hierarchy definitions.
 
 1. In the upper left part of the explorer select the Model tab:
 
-ToDo image
+![Model Tab](media/modelPane.PNG)
 
-2. Type ToDo --variables
+2. Next we will update the DefaulType and author numers variables, including a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" ContosoArtShipping's asset trackers are complete with a damage detection module that combines accelerometer data with GPS data to emit a signal indicating the condition of the parcel. Because the signal is numeric--0 for a healthy state and 1 for damaged--we can associate those values to a label. Click on "Types," and on the far right, under "Actions," select the pencil icon.
+
+Update the Name from DefaultType to Asset Tracker
+Update Description from Default type to "Tracker with temperature, location, and damage sensors"
+Click on "Variables" and select "Add Variable"
+
+Enter the following:
+
+Name: condition
+Kind: Categorical
+Value: Select condition (Double) from the drop-down
+Categories:
+Label Value
+Undamaged 0
+Damaged 1
+
+Default Category: Unknown
+
+![Categorical](media/categorical.PNG)
+
+Add a second variable for latitude:
+
+Name: lat
+Kind: Numeric
+Value: Select lat (Double) from the drop-down
+
+Repeat the same steps above for long and click "Save"
 
 3. The next step is to add a hierarchy. In the Hierarchies section, select + Add
-ToDo image
 
-4. Tab will open on the right-hand side. Add the following values:
-ToDo image -- table
-ToDo image
+4. A modal will open. Add the following values:
+Name: Delivery Routes
+Levels:
+Name: Route Name (click + Add Level to expand)
+ParcelID
 
-5. Click “Create” at the bottom
-You will see a hierarchy created:
-ToDo image
+![Add Hierachy](media/addHierachy.PNG)
 
-6. Next, click on “Instances” and click on ToDo “device 1”. To edit this Instance, click on “Edit”
+Click "Save"
 
-ToDo image
 
-7. On the Right-Hand Side, enter the following fields
-ToDo image -- table
-ToDo image
+5. Next, click on “Instances” and open the edit modal. Verify that the Type in the drop-down is Asset Tracker. Select "Instance Fields" and check Delivery Routes to associate this instance with your hierachy. 
+Enter the following:
+Route Name (from hierarchy) : Redmond-Seattle
+ParcelD (from hierarchy) : Enter a unique identifier for your parcel
+
+![Edit Instance Fields](media/editInstanceFields.PNG)
+
+Save to close the dialogue 
+
+6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel. Now, after expanding the hierarchy and selecting the tracking device, you will see the variables authored above ready to be charted. Click on "Show lat," "Show long," and "Show condition" to add these values to the chart.
+You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Perhaps there was a traffic incident that caused the drive to break hard. Someone monitoring the parcels or doing a post-mortem of an incident would most likely want to have data on when and where the damage occured. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
+
+![Zoom](media/zoom.PNG)
+
+After zooming into these events, select the Marker tool and place it in the chart such that it intersects the lat and long while the sensor was reporting damage, click again to "drop" the marker:
+
+![Marker](media/marker.PNG)
+
+This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
+
+
 
 
 
