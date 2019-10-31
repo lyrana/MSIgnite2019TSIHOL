@@ -101,7 +101,7 @@ Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
 
 ![Model Tab](media/modelPane.PNG)
 
-2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimenal artwork, and their trucks have climate controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help us label anomalies.  
+2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimenal artwork, and their trucks have climate controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help label anomalies.  
 
 Click on "Types," and on the far right, under "Actions," select the pencil icon.
 
@@ -115,30 +115,29 @@ Enter the following:
 
 Name: condition  
 Kind: Categorical  
-Value: Select condition (Double) from the drop-down  
+Value: Select Custom and paste the followin: tolong($event.temperature_anomaly.Double)
 Categories:  
 Label Value  
-Undamaged 0  
-Damaged 1
+OK 0  
+NOK 1
 
-Default Category: Unknown
+Default Category: Unknown  
+Expand Advanced Options  
+Filter (optional): (tolong($event.temperature_anomaly.Double)) != null
 
 ![Categorical](media/categorical.PNG)
 
-Add a second variable for latitude:
+Click "Apply" and "Save"
 
-Name: lat
-Kind: Numeric
-Value: Select lat (Double) from the drop-down
-
-Repeat the same steps above for long and click "Save"
+The tracker currently does not have a temperature_anomaly property, however, we're able to author the variable in anticipation of this value being populated in the future. After anamoly detection has been created, we will come back to TSI to view the parcel's condition.
 
 3. The next step is to add a hierarchy. In the Hierarchies section, select + Add
 
 4. A modal will open. Add the following values:
 Name: Delivery Routes
 Levels:
-Name: Route Name (click + Add Level to expand)
+Name:  
+Route Name (click "+ Add Level" to expand)  
 ParcelID
 
 ![Add Hierachy](media/addHierachy.PNG)
@@ -146,24 +145,19 @@ ParcelID
 Click "Save"
 
 
-5. Next, click on “Instances” and open the edit modal. Verify that the Type in the drop-down is Asset Tracker. Select "Instance Fields" and check Delivery Routes to associate this instance with your hierachy. 
-Enter the following:
-Route Name (from hierarchy) : Redmond-Seattle
-ParcelD (from hierarchy) : Enter a unique identifier for your parcel
+5. Next, click on “Instances” and open the edit modal by clicking the pencil icon under "Actions." Verify that the Type in the drop-down is now Asset Tracker. Select "Instance Fields" and check Delivery Routes to associate this instance with your hierachy.  
+Enter the following:  
+Route Name (from hierarchy) : Redmond-Seattle  
+ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment that your asset tracker is currently tracking
 
-![Edit Instance Fields](media/editInstanceFields.PNG)
+![Edit Instance Fields](media/editInstanceFields.PNG)  
+Click "Save"
 
-Save to close the dialogue 
+6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
 
-6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel. Now, after expanding the hierarchy and selecting the tracking device, you will see the variables authored above ready to be charted. Click on "Show lat," "Show long," and "Show condition" to add these values to the chart.
-You'll notice that the category for condition presents two different colors, indicating that there was a "damaged" value received. Perhaps there was a traffic incident that caused the drive to break hard. Someone monitoring the parcels or doing a post-mortem of an incident would most likely want to have data on when and where the damage occured. Click on the chart and drag your cursor over this area to highlight. You will see a tooltip appear with the option to "Zoom"
+# TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
-![Zoom](media/zoom.PNG)
-
-After zooming into these events, select the Marker tool and place it in the chart such that it intersects the lat and long while the sensor was reporting damage, click again to "drop" the marker:
-
-![Marker](media/marker.PNG)
-
+Come back to the TSI explorer 
 This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
 
