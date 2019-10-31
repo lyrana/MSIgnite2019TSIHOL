@@ -159,7 +159,7 @@ ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment th
 ![Edit Instance Fields](media/editInstanceFields.PNG)  
 Click "Save"
 
-6. Navigate back to the Analyze tab, and change from Heat Map back to  to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
+6. Navigate back to the Analyze tab, and change from heat map back to a line chart. In the hierachy pane, you should now find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
@@ -169,7 +169,7 @@ Click "Save"
 
 ![Edit Instance Fields](media/newEventSource.PNG)
 
-Coming back to the TSI explorer, 
+Coming back to the TSI explorer, either remove or de-select all data streams except for temperature, lat, lon, and condition. 
 
 This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
