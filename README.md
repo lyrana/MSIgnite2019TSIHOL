@@ -91,10 +91,10 @@ Uncheck every variable except for temperature, and then change the charting opti
 
 **Step 3: Contextualize and Analyze data**
 
-In the previous section, you charted a raw data stream without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
-Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
+In the previous section, you charted raw data without contextualization. In this section, you will add time series model entities to contextualize your IoT data.
+Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.  
 **Types** allow users to define calculations, aggregates, and categories over raw telemetry data, as well as define a tag for the sensor (example: Temperature sensor, Pressure sensor). This is achieved by authoring type variables. The DefaultType is pre-configured with three variables: temp, humidity, and EventCount, which can easily be removed or updated if need be.  
-**Hierarchies** allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Delivery Routes -> ParcelID).
+**Hierarchies** allow users to specify the structure of their assets. For example, an organization has buildings and buildings have rooms which contain IoT devices. The hierarchy structure in this case will be (Delivery Routes -> ParcelID). 
 **Instances** enrich incoming IoT data with device metadata. An instance links to 1 type definition and multiple hierarchy definitions.
 
 1. In the upper left part of the explorer select the Model tab:
