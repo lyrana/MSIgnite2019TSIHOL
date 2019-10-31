@@ -115,7 +115,7 @@ Enter the following:
 
 Name: condition  
 Kind: Categorical  
-Value: Select Custom and paste the followin: tolong($event.temperature_anomaly.Double)
+Value: Select Custom and paste the following: tolong($event.temperature_anomaly.Double)
 Categories:  
 Label Value  
 OK 0  
@@ -130,6 +130,12 @@ Filter (optional): (tolong($event.temperature_anomaly.Double)) != null
 Click "Apply" and "Save"
 
 The tracker currently does not have a temperature_anomaly property, however, we're able to author the variable in anticipation of this value being populated in the future. After anamoly detection has been created, we will come back to TSI to view the parcel's condition.
+
+Now that we've explicitly defined a variable on the Asset Tracker type, the auto-discovered properties that we were able to chart in the previous step need to be added as well. Let's expidite this process by uploading a JSON file with these updates:  
+
+Open and save a local copy of the ![AssetTracker.JSON file](./AssetTrackerType.JSON)
+
+Click on "Upload JSON," "Choose File" and select the saved JSON and click "Upload." The type variable count should change to 17.
 
 3. The next step is to add a hierarchy. In the Hierarchies section, select + Add
 
@@ -153,13 +159,13 @@ ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment th
 ![Edit Instance Fields](media/editInstanceFields.PNG)  
 Click "Save"
 
-6. Navigate back to the Analyze tab to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
+6. Navigate back to the Analyze tab, and change from Heat Map back to  to find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
 **Step TODO: Enable a Second Event Source**
 
-1. In the Azure portal, navigate to your TSI instance and click on "Event Sources." Select "Add." Fill out the form, selecting the Event Hub you configured as the output for the ASA job. You can select the $Default consumer group and leave the Timestamp property blank.
+1. In the Azure portal, navigate to your TSI instance and click on "Event Sources." Select "Add." Complete all the necessary fields, selecting the Event Hub you configured as the output for the ASA job. You can select the $Default consumer group and leave the Timestamp property blank.
 
 ![Edit Instance Fields](media/newEventSource.PNG)
 
