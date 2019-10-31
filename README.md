@@ -157,7 +157,14 @@ Click "Save"
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
-Come back to the TSI explorer 
+**Step TODO: Enable a Second Event Source**
+
+1. In the Azure portal, navigate to your TSI instance and click on "Event Sources." Select "Add." Fill out the form, selecting the Event Hub you configured as the output for the ASA job. You can select the $Default consumer group and leave the Timestamp property blank.
+
+![Edit Instance Fields](media/newEventSource.PNG)
+
+Coming back to the TSI explorer, 
+
 This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
 
