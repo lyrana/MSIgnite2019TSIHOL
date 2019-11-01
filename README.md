@@ -167,11 +167,22 @@ Click "Save"
 
 1. In the Azure portal, navigate to your TSI instance and click on "Event Sources." Select "Add." Complete all the necessary fields, selecting the Event Hub you configured as the output for the ASA job. You can select the $Default consumer group and leave the Timestamp property blank.
 
-![Edit Instance Fields](media/newEventSource.PNG)
+![New Event Source](media/newEventSource.PNG)
 
-Now that the anomaly detection pipeline is set up as a TSI event source, navigate bask to the TSI explorer and either remove or de-select all data streams except for temperature, lat, lon, and condition. In the charting options there is a Marker   
+2. In general we see three categories of responses to compute processing for anomaly detection or other purposes: visualization, alerting, and automation. Your solution might be connected to one or many external systems, and depending on your business needs you might utilize a mixture of these responses. After receiving an alert, you as a manager at ContosoArtShipping come to the TSI explorer to gather more information. Either remove or de-select all data streams except for temperature, lat, lon, and condition. The categorical variable for condition will appear as a colored bar, and a multi-colored bar indicates that there is more than one label value present in the selected time range. In the charting options, click on the Marker feature and drop a marker over the start of the anomaly. This allows you to see the exact location when the temperature began to fluctuate:
 
-This illustrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomaly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
+![Marker](media/marker.PNG)
+
+This illustrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations or post-mortems.  
+
+3. Time Series Insights has released a Power BI connector in preview. You can capture the query for the current chart by selecting "More Actions" > "Connect to Power BI" on the top right of the chart. You have the option to select aggregated data, or raw events.  
+
+Leaders in your organization might want to have an easy to consume snapshot of your organization's overall health, and the Power BI connector enables you to create dashboards that display data from a varitey of sources--operational data can be displayed along with information from finance and accounting.
+
+![Power BI](media/connectPowerBI.PNG)
+
+
+In the final section, you'll finish with a map rendering using Azure Maps and the TSI JavaScript SDK.
 
 
 
