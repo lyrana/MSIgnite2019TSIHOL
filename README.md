@@ -80,7 +80,9 @@ You can increase the time interval:
 
 ![Temp plotted](media/time-interval.PNG)
 
-Your plotted time series are shown below in the well, along with additional settings. Click on the gear icon for one of your selected variables to expand the settings, and toggle the options to see the various views available. You'll notice there is also a time shift setting. Time shift allows you to compare a tag to itself over a previous interval in time, and other tags plotted will be de-selected, but remain in the well. This is especially useful for data that is highly periodic or seasonal. You will need at least an hours' worth of data to view the time shift, thus it is not yet available for the lab. The ability to select custom time shift intervals in addition to the pre-selection options is on the product roadmap.
+Your plotted time series are shown below in the well, along with additional settings. Click on the gear icon for one of your selected variables to expand the settings, and toggle the options to see the various views available. You'll notice there is also a time shift setting. Time shift allows you to compare a tag to itself over a previous interval in time, and other tags plotted will be de-selected, but remain in the well. This is especially useful for data that is highly periodic or seasonal. You will need at least an hours' worth of data to view the time shift, thus it is not yet available for the lab, however the image below shows an example of what this might look like, using the overlap chart view. The ability to select custom time shift intervals in addition to the pre-selection options is on the product roadmap.
+
+![Temp plotted](media/timeShift.PNG)
 
 Uncheck every variable except for temperature, and then change the charting options to heat map:
 
@@ -159,7 +161,7 @@ ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment th
 ![Edit Instance Fields](media/editInstanceFields.PNG)  
 Click "Save"
 
-6. Navigate back to the Analyze tab, and change from heat map back to a line chart. In the hierarchy pane, you should now find your tracking device in the Delivery Routes hierarchy under the Redmond-Seattle route, associated  to the correct parcel.
+6. Navigate back to the Analyze tab and change from heat map back to a line chart. In the hierarchy pane, you should now find your tracking device in the Delivery Routes hierarchy under the Redmond-Seattle route, associated to the correct parcel.
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
