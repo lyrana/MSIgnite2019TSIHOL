@@ -179,7 +179,7 @@ This illustrates the ability of the Time Series Insights preview explorer to hel
 
 3. Time Series Insights has released a Power BI connector in preview. You can capture the query for the current chart by selecting "More Actions" > "Connect to Power BI" on the top right of the chart. You have the option to select aggregated data, or raw events.  
 
-Leaders in your organization might want to have an easy to consume snapshot of your organization's overall health, and the Power BI connector enables you to create dashboards that display data from a varitey of sources--operational data can be displayed along with information from finance and accounting.
+Leaders in your organization might want to have an easy-to-consume snapshot of your organization's overall health, and the Power BI connector enables you to create dashboards that display data from a varitey of sources--operational data can be displayed along with information from finance and accounting.
 
 ![Power BI](media/connectPowerBI.PNG)
 
