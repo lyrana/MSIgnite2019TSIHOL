@@ -110,7 +110,7 @@ Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
 
 ![Model Tab](media/modelPane.PNG)
 
-2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value received in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimental artwork, and their trucks have climate-controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help label anomalies.  
+2. Next, we will update the DefaulType and create a categorical variable for the property temperature_anomaly in anticipation of this property value being sent to TSI in an upcoming step. Categorical variables allow you to map a discrete value received in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimental artwork, and their trucks have climate-controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help label anomalies.    
 
 Click on "Types," and on the far right, under "Actions," select the pencil icon.
 
@@ -137,8 +137,6 @@ Filter (optional): (tolong($event.temperature_anomaly.Double)) != null
 ![Categorical](media/categorical.PNG)
 
 Click "Apply" and "Save"
-
-The tracker currently does not have a temperature_anomaly property, however, we're able to author the variable in anticipation of this value being populated in the future. After anomaly detection has been created, we will come back to TSI to view the parcel's condition.
 
 Now that we've explicitly defined a variable on the Asset Tracker type, the auto-discovered properties that we were able to chart in the previous step need to be added as well. Let's expedite this process by uploading a JSON file with these updates:  
 
@@ -170,7 +168,7 @@ Click "Save"
 
 6. Navigate back to the Analyze tab and change from heat map back to a line chart. In the hierarchy pane, you should now find your tracking device in the Delivery Routes hierarchy under the Redmond-Seattle route, associated to the correct parcel.
 
-# TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
+# TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 113
 
 **Step (TODO insert step): Enable a Second Event Source**
 
