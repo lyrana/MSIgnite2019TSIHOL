@@ -3,7 +3,7 @@ Time Series Insights Section of the 2019 Ignite Hands on Lab
 
 (Assuming that participants have gone through PnP, DPS and Hub steps prior)
 
-Now that your device is sending data to the cloud you'll need a data historian to not only store and retain data, but also for ad hoc querying and analysis, as well as visualizations. Introducing Azure Time Series Insights Preview (TSI). TSI is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. TSI is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. The Time Series Insights Preview pay-as-you-go (PAYG) SKU just launched additional features, many of which we will explore today.
+Now that your device is sending data to the cloud, you'll need a data historian to not only store and retain data, but also for ad hoc querying and analysis, as well as visualizations. Introducing Azure Time Series Insights Preview (TSI). TSI is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. TSI is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. The Time Series Insights Preview pay-as-you-go (PAYG) SKU just launched additional features, many of which we will explore today.
 
 **Step 1: Create an Azure Time Series Insights Preview environment**
 
@@ -62,17 +62,17 @@ In this section, you will explore data in your new environment via the Azure Tim
 
 2.  Wait for the environment to load in the browser. Once it loads, you'll be on the default landing page. Some of the key features include:
 
-* Selecting a time range: You can select a different time range by dragging the handles of the availability picker, or using the date-time selector in the top right corner. You can expand the bar to see the volume of data over time, or keep it collapsed for a slimmer look. Any time selection that is within the orange bar boundary will query your Time Series Insights environment's warm store. Warm storage is configurable for upto 31 days retention, and is designed for frequent querying of recent data. There is no charge for these queries.
+* Selecting a time range: You can select a different time range by dragging the handles of the availability picker or using the date-time selector in the top right corner. You can expand the bar to see the volume of data over time, or keep it collapsed for a slimmer look. Any time selection that is within the orange bar boundary will query your Time Series Insights environment's warm store. Warm storage is configurable for up to 31 days retention and is designed for frequent querying of recent data. There is no charge for these queries.
 
 ![Availability picker](media/availabilityPicker.PNG)
 
-* Hierachy: On the left, you'll see the Time Series Model (TSM) hierachy. Time series that are not yet configured to a hierachy will fall under the default of "Unassigned Time Series Instances."
+* Hierarchy: On the left, you'll see the Time Series Model (TSM) hierarchy. Time series that are not yet configured to a hierarchy will fall under the default of "Unassigned Time Series Instances."
 
-![Hierachy](media/defaultHierachy.PNG)
+![Hierarchy](media/defaultHierachy.PNG)
 
 * Plotting: In the middle of the page is the charting pane where you can visualize events and perform analysis. Below the charting pane is the well which offers additional settings such as time shift and step interpolations.
 
-3. Click on your asset tracker, you'll see the properties available for plotting, click on “Show humidity." If your selected time range is narrow, expand to view more data. Click on additonal properties to add them to the chart, including temperature, pressure, accelerometer, and latitude and longitude data:
+3. Click on your asset tracker, you'll see the properties available for plotting, click on “Show humidity." If your selected time range is narrow, expand to view more data. Click on additional properties to add them to the chart, including temperature, pressure, accelerometer, and latitude and longitude data:
 
 ![Temp plotted](media/plotted-chart.PNG)
 
@@ -80,7 +80,7 @@ You can increase the time interval:
 
 ![Temp plotted](media/time-interval.PNG)
 
-Your plotted time series are shown below in the well, along with additional settings. Click on the gear icon for one of your selected variables to expand the settings, and toggle the options to see the various views available. You'll notice there is also a Time Shift setting. Time Shift allows you to compare a tag to itself over a previous interval in time, and other tags plotted will be de-selected, but remain in the well. This is especially useful for data that is highly periodic or seasonal. You will need at least an hours' worth of data to view the Time Shift, thus it is not yet available for the lab. The ability to select custom Time Shift intervals in addition to the pre-selection options is on the product road-map.
+Your plotted time series are shown below in the well, along with additional settings. Click on the gear icon for one of your selected variables to expand the settings, and toggle the options to see the various views available. You'll notice there is also a time shift setting. Time shift allows you to compare a tag to itself over a previous interval in time, and other tags plotted will be de-selected, but remain in the well. This is especially useful for data that is highly periodic or seasonal. You will need at least an hours' worth of data to view the time shift, thus it is not yet available for the lab. The ability to select custom time shift intervals in addition to the pre-selection options is on the product roadmap.
 
 Uncheck every variable except for temperature, and then change the charting options to heat map:
 
@@ -101,7 +101,7 @@ Time Series Model (preview) has 3 components: Types, Hierarchies and Instances.
 
 ![Model Tab](media/modelPane.PNG)
 
-2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value recieved in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimenal artwork, and their trucks have climate controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help label anomalies.  
+2. Next we will update the DefaulType and create a categorical variable. Categorical variables allow you to map a discrete value received in an event payload to a specific category label. This enables you to give greater meaning or context to your streaming data, and to ask questions such as "over the past interval, what was the count for a specific category?" Soon you'll be leveraging other Azure services to build an anomaly detection pipeline. ContosoArtShipping ships high-value, original, or highly sentimental artwork, and their trucks have climate-controlled environments. Given the delicate nature of art, significant variations in temperature could cause mild to severe damage, and thus operators want to be alerted to any changes to the shipping environment. We will create a categorical variable that will help label anomalies.  
 
 Click on "Types," and on the far right, under "Actions," select the pencil icon.
 
@@ -129,9 +129,9 @@ Filter (optional): (tolong($event.temperature_anomaly.Double)) != null
 
 Click "Apply" and "Save"
 
-The tracker currently does not have a temperature_anomaly property, however, we're able to author the variable in anticipation of this value being populated in the future. After anamoly detection has been created, we will come back to TSI to view the parcel's condition.
+The tracker currently does not have a temperature_anomaly property, however, we're able to author the variable in anticipation of this value being populated in the future. After anomaly detection has been created, we will come back to TSI to view the parcel's condition.
 
-Now that we've explicitly defined a variable on the Asset Tracker type, the auto-discovered properties that we were able to chart in the previous step need to be added as well. Let's expidite this process by uploading a JSON file with these updates:  
+Now that we've explicitly defined a variable on the Asset Tracker type, the auto-discovered properties that we were able to chart in the previous step need to be added as well. Let's expedite this process by uploading a JSON file with these updates:  
 
 Open and save a local copy of the ![AssetTracker.JSON file](./AssetTrackerType.JSON)
 
@@ -146,12 +146,12 @@ Name:
 Route Name (click "+ Add Level" to expand)  
 ParcelID
 
-![Add Hierachy](media/addHierachy.PNG)
+![Add Hierarchy](media/addHierachy.PNG)
 
 Click "Save"
 
 
-5. Next, click on “Instances” and open the edit modal by clicking the pencil icon under "Actions." Verify that the Type in the drop-down is now Asset Tracker. Select "Instance Fields" and check Delivery Routes to associate this instance with your hierachy.  
+5. Next, click on “Instances” and open the edit modal by clicking the pencil icon under "Actions." Verify that the Type in the drop-down is now Asset Tracker. Select "Instance Fields" and check Delivery Routes to associate this instance with your hierarchy.  
 Enter the following:  
 Route Name (from hierarchy) : Redmond-Seattle  
 ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment that your asset tracker is currently tracking
@@ -159,7 +159,7 @@ ParcelD (from hierarchy) : Enter a unique identifier for the artwork shipment th
 ![Edit Instance Fields](media/editInstanceFields.PNG)  
 Click "Save"
 
-6. Navigate back to the Analyze tab, and change from heat map back to a line chart. In the hierachy pane, you should now find your tracking device in the Delivery Routes hierachy under the Redmond-Seattle route, associtated to the correct parcel.
+6. Navigate back to the Analyze tab, and change from heat map back to a line chart. In the hierarchy pane, you should now find your tracking device in the Delivery Routes hierarchy under the Redmond-Seattle route, associated  to the correct parcel.
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
@@ -169,9 +169,9 @@ Click "Save"
 
 ![Edit Instance Fields](media/newEventSource.PNG)
 
-Coming back to the TSI explorer, either remove or de-select all data streams except for temperature, lat, lon, and condition. 
+Now that the anomaly detection pipeline is set up as a TSI event source, navigate bask to the TSI explorer and either remove or de-select all data streams except for temperature, lat, lon, and condition. In the charting options there is a Marker   
 
-This illistrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomoly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
+This illustrates the ability of the Time Series Insights preview explorer to help in ad-hoc investigations. Many industrial IoT solutions will rely on some level of automation to further streamline processes. In the next section, we will enable anomaly detection using the Azure Stream Analytics and Event Hub services, before coming back to TSI to add this additional hub as an event source. We finish with a final rendering using Azure Maps and the TSI JavaScript SDK.
 
 
 
