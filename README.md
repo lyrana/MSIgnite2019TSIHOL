@@ -135,7 +135,7 @@ The tracker currently does not have a temperature_anomaly property, however, we'
 
 Now that we've explicitly defined a variable on the Asset Tracker type, the auto-discovered properties that we were able to chart in the previous step need to be added as well. Let's expedite this process by uploading a JSON file with these updates:  
 
-Open and save a local copy of the ![AssetTracker.JSON file](./AssetTrackerType.JSON)
+Open and save a local copy of the ![AssetTracker.JSON file](./AssetTrackerType.json)
 
 Click on "Upload JSON," "Choose File" and select the saved JSON and click "Upload." The type variable count should change to 17.
 
