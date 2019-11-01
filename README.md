@@ -5,11 +5,11 @@ Time Series Insights Section of the 2019 Ignite Hands on Lab
 
 Now that your device is sending data to the cloud, you'll need a data historian to not only store and retain data, but also for ad hoc querying and analysis, as well as visualizations. Introducing Azure Time Series Insights Preview (TSI). TSI is an end-to-end PaaS offering to ingest, process, store, and query highly contextualized, time-series-optimized, IoT-scale data. TSI is tailored towards the unique needs of industrial IoT deployments with capabilities including multi-layered storage, time series modeling, and cost-effective queries over decades of data. The Time Series Insights Preview pay-as-you-go (PAYG) SKU just launched additional features, many of which we will explore today.  
 During the lab, you'll explore TSI by doing the following:  
-* Provisioning an environment and event source  
-* Exploring the various charting options  
-* Authoring a Time Series Model  
-* Adding an additional event source
-* Doing an ad-hoc investigation
+* Provision an environment and event source  
+* Explore the various charting options  
+* Create a Time Series Model  
+* Add an additional event source
+* Perform an ad-hoc investigation
 
 
 **Step 1: Create an Azure Time Series Insights Preview environment**
