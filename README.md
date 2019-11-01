@@ -165,7 +165,7 @@ Click "Save"
 
 # TODO: narration to change segments to detection anomaly portion. This has already been briefly introduced, see line 104
 
-**Step TODO: Enable a Second Event Source**
+**Step <TODO insert step>: Enable a Second Event Source**
 
 1. In the Azure portal, navigate to your TSI instance and click on "Event Sources." Select "Add." Complete all the necessary fields, selecting the Event Hub you configured as the output for the ASA job. You can select the $Default consumer group and leave the Timestamp property blank.
 
